@@ -1,24 +1,33 @@
-let person = window.prompt("Please enter your name: ");
-if (person != null){
-    document.getElementById("myName").innerHTML = person;
+function zamanF(){
+	let zaman = document.querySelector("#zaman")
+	const tarih=new Date();
+	let gun=tarih.getDay();
+	let gunler= ["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
+	let saat=tarih.getHours();
+	let dakika=tarih.getMinutes();
+	let saniye=tarih.getSeconds();
+	let goster = `${saat}:${dakika}:${saniye} ${gunler[gun]}`
+	zaman.innerHTML = `${goster}`
+	setInterval(zamanF, 1000);
+	
+
 }
 
-function showTime() {
-    const today = new Date();
-    let weekday = ["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
-    let h = today.getHours();
-    let m = today.getMinutes();
-    let s = today.getSeconds();
-    let d = weekday[today.getDay()];
-    // Sunday - Saturday : 0 - 6
-    m = checkTime(m);
-    s = checkTime(s);
-    document.getElementById('myClock').innerHTML =  h + ":" + m + ":" + s + " " + d;
-    setTimeout(showTime, 1000);
-    }
 
-function checkTime(i) {
-    if (i < 10) {i = "0" + i};  
-    return i;
-    }
-showTime()
+let username = prompt("Site anasayfasına erişebilmek için isminizi giriniz:");
+let textInfo;
+let info = document.querySelector("#info")
+
+
+if(username.length>0)
+{
+    zamanF();
+		info.innerHTML = `Merhaba, ${username}! Hoşgeldin!	 ` 
+	  
+}
+else{
+    alert('İsminizi giriniz')
+    window.location = '/index.html'
+    //info.innerHTML = "İsminizi girmek için sayfayı yenileyiniz"
+}
+console.log(textInfo);
